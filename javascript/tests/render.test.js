@@ -45,4 +45,23 @@ describe('renders the board', () => {
 `
         );
     });
+
+    it('renders a 4x5 board with mixed cells', () => {
+        const board = [
+            [false, false, false, true],
+            [false, true, false, false],
+            [false, true, true, false],
+            [false, true, true, false],
+            [true, false, false, true],
+        ]
+        expect(renderBoard(board)).toBe(
+            `
+. . . █
+. █ . .
+. █ █ .
+. █ █ .
+█ . . █
+`
+        );
+    });
 });
