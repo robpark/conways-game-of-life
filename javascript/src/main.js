@@ -1,3 +1,15 @@
-import {helloWorld} from "./hello-world.js";
+import {evolve, render} from "./board.js";
 
-console.log(helloWorld('welcome to the Game of Life'));
+let board = [
+    [true, true, false, false, false],
+    [false, true, false, false, false],
+    [false, false, true, false, false],
+    [false, false, true, true, false],
+    [false, false, true, true, false],
+];
+console.log(render(board));
+
+for (let evolution = 0; evolution < 5; evolution++) {
+    board = evolve(board);
+    console.log(render(board));
+}

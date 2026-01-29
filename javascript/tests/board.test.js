@@ -1,13 +1,13 @@
-import {renderBoard} from "../src/render.js";
+import {evolve, render} from "../src/board.js";
 
-describe('renders the board', () => {
+describe('rendering the board', () => {
     it('renders a 3x3 board with dead cells', () => {
         const board = [
             [false, false, false],
             [false, false, false],
             [false, false, false],
         ]
-        expect(renderBoard(board)).toBe(
+        expect(render(board)).toBe(
             `
 . . .
 . . .
@@ -22,7 +22,7 @@ describe('renders the board', () => {
             [true, true, true],
             [true, true, true],
         ]
-        expect(renderBoard(board)).toBe(
+        expect(render(board)).toBe(
             `
 █ █ █
 █ █ █
@@ -37,7 +37,7 @@ describe('renders the board', () => {
             [false, true, false],
             [true, false, false],
         ]
-        expect(renderBoard(board)).toBe(
+        expect(render(board)).toBe(
             `
 . . █
 . █ .
@@ -54,7 +54,7 @@ describe('renders the board', () => {
             [false, true, true, false],
             [true, false, false, true],
         ]
-        expect(renderBoard(board)).toBe(
+        expect(render(board)).toBe(
             `
 . . . █
 . █ . .
@@ -65,3 +65,19 @@ describe('renders the board', () => {
         );
     });
 });
+
+describe('evolving the board', () => {
+    it('evolves all cells', () => {
+        const inBoard = [
+            [false, false, true],
+            [false, true, false],
+            [true, false, false],
+        ];
+        const outBoard = [
+            [false, false, false],
+            [false, true, false],
+            [false, false, false],
+        ];
+        expect(evolve(inBoard)).toEqual(outBoard);
+    });
+})
